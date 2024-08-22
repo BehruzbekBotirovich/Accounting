@@ -1,7 +1,8 @@
 <template>
-    <div class="bg-blue-500 py-14" id="main">
-        <div class="main-container flex gap-10" id="main">
-            <div class="w-1/2 space-y-8 text-white">
+    <div ></div>
+    <div class="bg-blue-500 py-10" >
+        <div class="main-container flex gap-10" >
+            <div class="w-1/2 space-y-8 text-white" >
                 <h1 class="text-5xl font-bold">БУХГАЛТЕРСКИЙ АУТСОРСИНГ </h1>
                 <p class="font-thin text-4xl">экспертного уровня с оплатой
                     только за выполненные

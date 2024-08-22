@@ -1,5 +1,5 @@
 <template>
-    <header class="main-container flex items-center justify-between py-8">
+    <header class="main-container flex items-center justify-between py-4">
         <div> <img src="../assets/images/logo.png" alt=""> </div>
         <div class="flex items-center ">
             <a-button type=""
@@ -57,20 +57,22 @@
     <div class="bg-teal-600  sticky z-30" style="top: -1px;">
         <nav class="main-container flex justify-center">
             <ul class="navbar" style="width: 710px;">
-                <li :class="{ active: activeSection === 'main' }" key="1">
+                <li :class="{ active: $route.path === '/' && activeSection === '' }">
                     <RouterLink to="/">Главная </RouterLink>
                 </li>
-                <li :class="{ active: activeSection === 'about' }" key="2">
-                    <router-link to="/about">О компании</router-link>
+                <router-link to="/about">
+                    <li @click="activeAbout" :class="{ active: $route.path === '/about' }">
+                        О компании </li>
+                </router-link>
+
+                <li :class="{ active: activeSection === 'tarifs' }" @click.prevent="navigateAndScroll('tarifs')">
+                    Услуг и Тарыфи
                 </li>
-                <li :class="{ active: activeSection === 'tarifs' }" key="3">
-                    <a @click.prevent="navigateAndScroll('tarifs')" href="#">Услуг и Тарыфи</a>
+                <li :class="{ active: activeSection === 'experts' }" @click.prevent="navigateAndScroll('experts')">
+                    Специалисти
                 </li>
-                <li :class="{ active: activeSection === 'experts' }" key="4">
-                    <a @click.prevent="navigateAndScroll('experts')" href="#">Специалисти</a>
-                </li>
-                <li :class="{ active: activeSection === 'contacts' }" key="6">
-                    <a @click.prevent="navigateAndScroll('contacts')" href="#"> Контакты</a>
+                <li :class="{ active: activeSection === 'contacts' }" @click.prevent="navigateAndScroll('contacts')">
+                    Контакты
                 </li>
             </ul>
 
@@ -82,10 +84,11 @@
 </template>
 
 <script setup>
-
-import { useRouter } from 'vue-router';
+import { useRouter, useRoute } from 'vue-router';
 import { ref, onMounted, onUnmounted } from 'vue';
+
 const router = useRouter();
+const route = useRoute();
 const activeSection = ref('');
 
 const scrollTo = (elementId) => {
@@ -98,49 +101,68 @@ const scrollTo = (elementId) => {
 
 const navigateAndScroll = (elementId) => {
     router.push('/').then(() => {
-        // Ожидаем завершения перехода по маршруту, затем выполняем прокрутку
         scrollTo(elementId);
     });
 };
-
 const handleScroll = () => {
-    const sections = ['main', 'tarifs', 'experts', 'contacts', 'about'];
+    const sections = ['main', 'tarifs', 'experts', 'contacts'];
     const scrollPosition = window.scrollY + window.innerHeight / 2;
 
-    for (const section of sections) {
-        const element = document.getElementById(section);
-        if (element) {
-            const { offsetTop, offsetHeight } = element;
-            if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
-                activeSection.value = section;
-                break;
+    if (router.path === '/about') {
+        activeSection.value === ''
+    } else {
+
+
+        for (const section of sections) {
+            const element = document.getElementById(section);
+            if (element) {
+                const { offsetTop, offsetHeight } = element;
+                if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+                    activeSection.value = section;
+                    break;
+                }
             }
         }
     }
+    // If no section is active, set activeSection to empty (default for main page)
+    // if (route.path === '/' && activeSection.value === '') {
+    //     activeSection.value = '';
+    // }
 };
-
 
 onMounted(() => {
     window.addEventListener('scroll', handleScroll);
-    handleScroll(); // To set the active section on initial load
+    handleScroll(); // Set the active section on initial load
 });
 
 onUnmounted(() => {
     window.removeEventListener('scroll', handleScroll);
 });
+const activeAbout = () => {
+    activeSection.value = ''
+}
 </script>
 
 <style scoped>
-.active {
-    background: #af5858;
-    
-}
-
 .navbar {
+    gap: 2px;
     display: flex;
     align-items: center;
-   }
-   .navbar>li{
+}
+
+.navbar li {
     padding: 12px 20px;
-   }
+    cursor: pointer;
+}
+
+.navbar li:not(.active) {
+    color: white;
+}
+
+.active,
+.navbar li:hover {
+    background: #ffffff;
+    color: #0284c7;
+    font-weight: 500;
+}
 </style>

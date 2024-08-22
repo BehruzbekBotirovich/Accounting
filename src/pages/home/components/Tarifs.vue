@@ -1,7 +1,7 @@
 <template>
 
-    <h1 class="main-container text-4xl font-bold uppercase mt-16"  id="tarifs">Тарифы и входящие в них услуги </h1>
-    <div class="flex main-container pt-8 pb-16">
+    <h1 class="main-container text-4xl font-bold uppercase mt-16"  >Тарифы и входящие в них услуги </h1>
+    <div class="flex main-container pt-8 pb-16" id="tarifs">
         <!-- navbar -->
         <div class="w-1/3 bg-blue-900 text-white  rounded-s-xl ">
             <ul class="tarif-list  rounded-s-xl ">

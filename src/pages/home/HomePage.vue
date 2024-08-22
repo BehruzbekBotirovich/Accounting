@@ -1,15 +1,15 @@
 <template>
-    <div>
+    <div id="main">
         <IntroPage></IntroPage>
         <AboutServises></AboutServises>
         <Consultation></Consultation>
-        <Tarifs></Tarifs>
-        <Experts />
-        <Comments />
-        <Banner2 />
-        <Questions />
-        <Map />
     </div>
+    <Tarifs></Tarifs>
+    <Experts />
+    <Comments />
+    <Banner2 />
+    <Questions />
+    <Map />
 </template>
 
 <script setup>

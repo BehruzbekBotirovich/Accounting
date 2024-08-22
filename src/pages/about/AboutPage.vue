@@ -1,12 +1,12 @@
 <template>
-    <div class="main-container" id="about">
+    <div class="main-container">
 
-        <h1 class="flex items-center gap-2">Главная
+        <h1 class="flex items-center gap-2" >Главная
             <RightOutlined style="font-size: 10px;" /> О компании
             <RightOutlined style="font-size: 10px;" />
             {{ selectedItem }}
         </h1>
-        <h1 class=" text-4xl font-bold uppercase mt-16" id="tarifs"> {{ selectedItem }} </h1>
+        <h1 class=" text-4xl font-bold uppercase mt-16" > {{ selectedItem }} </h1>
         <div class="flex  pt-8 pb-16">
             <!-- navbar -->
             <div class="w-1/4  rounded-s-xl ">
@@ -20,8 +20,8 @@
 
                     <li class="py-3  border-b" @click="selectedItem = 'litsense'"
                         :class="{ 'text-blue-600': selectedItem == 'litsense' }">Лицензии </li>
-                    <li class="py-3  border-b" @click="selectedItem = 'vacancy'"
-                        :class="{ 'text-blue-600': selectedItem == 'vacancy' }">Вакансии </li>
+                    <li class="py-3  border-b" @click="selectedItem = 'litsense'"
+                        :class="{ 'text-blue-600': selectedItem == 'vacansy' }">Вакансии </li>
                     <li class="py-3  border-b" @click="selectedItem = 'rec'"
                         :class="{ 'text-blue-600': selectedItem == 'rec' }">Реквизиты </li>
 
@@ -59,6 +59,9 @@ import Consultation from '../home/components/Consultation.vue';
 import { ref } from 'vue';
 import { RightOutlined } from '@ant-design/icons-vue'
 const selectedItem = ref('info')
+
+
+
 </script>
 
 <style scoped>
