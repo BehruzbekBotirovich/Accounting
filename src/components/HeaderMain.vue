@@ -57,7 +57,7 @@
     <div class="bg-teal-600  sticky z-30" style="top: -1px;">
         <nav class="main-container flex justify-center">
             <ul class="navbar" style="width: 710px;">
-                <li :class="{ active: $route.path === '/' && activeSection === '' }">
+                <li :class="{ active: activeSection === 'main' }"  @click.prevent="navigateAndScroll('main')" >
                     <RouterLink to="/">Главная </RouterLink>
                 </li>
                 <router-link to="/about">
