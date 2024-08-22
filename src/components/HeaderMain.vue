@@ -57,20 +57,17 @@
     <div class="bg-teal-600 ">
         <nav class="main-container flex justify-center">
             <a-menu mode="horizontal" class="items-center" style="width: 710px;">
-                <a-menu-item :class="{ active: activeSection === 'about-us' }" key="1">
-                    <a @click.prevent="scrollTo('about-us')" href="#"> Главная </a>
+                <a-menu-item :class="{ active: activeSection === 'main' }" key="1">
+                    <RouterLink to="/">Главная </RouterLink>
                 </a-menu-item>
                 <a-menu-item :class="{ active: activeSection === 'product' }" key="2">
-                    <a @click.prevent="scrollTo('product')" href="#">О компании</a>
+                    <router-link to="/about">О компании</router-link>
                 </a-menu-item>
-                <a-menu-item :class="{ active: activeSection === 'workings' }" key="3">
-                    <a @click.prevent="scrollTo('workings')" href="#">Услуни</a>
+                <a-menu-item :class="{ active: activeSection === 'tarifs' }" key="3">
+                    <a @click.prevent="scrollTo('tarifs')" href="#">Услуг и Тарыфи</a>
                 </a-menu-item>
                 <a-menu-item :class="{ active: activeSection === 'faq' }" key="4">
                     <a @click.prevent="scrollTo('faq')" href="#">Специалисти</a>
-                </a-menu-item>
-                <a-menu-item :class="{ active: activeSection === 'contact' }" key="5">
-                    <a @click.prevent="scrollTo('contact')" href="#">Тарыфи</a>
                 </a-menu-item>
                 <a-menu-item key="6">
                     Контакты
@@ -85,7 +82,44 @@
 </template>
 
 <script setup>
+import { ref, onMounted, onUnmounted } from 'vue';
+const activeSection = ref('');
+const showMobileMenu = ref(false); // State to show/hide mobile menu
 
+// menu boyicha navigatsiya scroll boyicha
+const scrollTo = (elementId) => {
+    const element = document.getElementById(elementId);
+    showMobileMenu.value = false;
+    if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+        activeSection.value = elementId;
+    }
+};
+
+const handleScroll = () => {
+    const sections = ['about-us', 'product', 'workings', 'faq', 'contact'];
+    const scrollPosition = window.scrollY + window.innerHeight / 2;
+
+    for (const section of sections) {
+        const element = document.getElementById(section);
+        if (element) {
+            const { offsetTop, offsetHeight } = element;
+            if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+                activeSection.value = section;
+                break;
+            }
+        }
+    }
+};
+
+onMounted(() => {
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // To set the active section on initial load
+});
+
+onUnmounted(() => {
+    window.removeEventListener('scroll', handleScroll);
+});
 </script>
 
 <style lang="scss" scoped></style>
