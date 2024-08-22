@@ -54,25 +54,25 @@
 
         </div>
     </header>
-    <div class="bg-teal-600 ">
+    <div class="bg-teal-600  sticky z-30" style="top: -1px;">
         <nav class="main-container flex justify-center">
-            <a-menu mode="horizontal" class="items-center" style="width: 710px;">
-                <a-menu-item :class="{ active: activeSection === 'main' }" key="1">
+            <ul class="navbar" style="width: 710px;">
+                <li :class="{ active: activeSection === 'main' }" key="1">
                     <RouterLink to="/">Главная </RouterLink>
-                </a-menu-item>
-                <a-menu-item :class="{ active: activeSection === 'product' }" key="2">
+                </li>
+                <li :class="{ active: activeSection === 'about' }" key="2">
                     <router-link to="/about">О компании</router-link>
-                </a-menu-item>
-                <a-menu-item :class="{ active: activeSection === 'tarifs' }" key="3">
-                    <a @click.prevent="scrollTo('tarifs')" href="#">Услуг и Тарыфи</a>
-                </a-menu-item>
-                <a-menu-item :class="{ active: activeSection === 'faq' }" key="4">
-                    <a @click.prevent="scrollTo('faq')" href="#">Специалисти</a>
-                </a-menu-item>
-                <a-menu-item key="6">
-                    Контакты
-                </a-menu-item>
-            </a-menu>
+                </li>
+                <li :class="{ active: activeSection === 'tarifs' }" key="3">
+                    <a @click.prevent="navigateAndScroll('tarifs')" href="#">Услуг и Тарыфи</a>
+                </li>
+                <li :class="{ active: activeSection === 'experts' }" key="4">
+                    <a @click.prevent="navigateAndScroll('experts')" href="#">Специалисти</a>
+                </li>
+                <li :class="{ active: activeSection === 'contacts' }" key="6">
+                    <a @click.prevent="navigateAndScroll('contacts')" href="#"> Контакты</a>
+                </li>
+            </ul>
 
         </nav>
     </div>
@@ -82,22 +82,29 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue';
-const activeSection = ref('');
-const showMobileMenu = ref(false); // State to show/hide mobile menu
 
-// menu boyicha navigatsiya scroll boyicha
+import { useRouter } from 'vue-router';
+import { ref, onMounted, onUnmounted } from 'vue';
+const router = useRouter();
+const activeSection = ref('');
+
 const scrollTo = (elementId) => {
     const element = document.getElementById(elementId);
-    showMobileMenu.value = false;
     if (element) {
         element.scrollIntoView({ behavior: 'smooth' });
         activeSection.value = elementId;
     }
 };
 
+const navigateAndScroll = (elementId) => {
+    router.push('/').then(() => {
+        // Ожидаем завершения перехода по маршруту, затем выполняем прокрутку
+        scrollTo(elementId);
+    });
+};
+
 const handleScroll = () => {
-    const sections = ['about-us', 'product', 'workings', 'faq', 'contact'];
+    const sections = ['main', 'tarifs', 'experts', 'contacts', 'about'];
     const scrollPosition = window.scrollY + window.innerHeight / 2;
 
     for (const section of sections) {
@@ -112,6 +119,7 @@ const handleScroll = () => {
     }
 };
 
+
 onMounted(() => {
     window.addEventListener('scroll', handleScroll);
     handleScroll(); // To set the active section on initial load
@@ -122,4 +130,17 @@ onUnmounted(() => {
 });
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped>
+.active {
+    background: #af5858;
+    
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+   }
+   .navbar>li{
+    padding: 12px 20px;
+   }
+</style>

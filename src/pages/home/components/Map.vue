@@ -1,5 +1,5 @@
 <template>
-    <div class="relative flex pt-20 bg-neutral-300">
+    <div class="relative flex pt-20 bg-neutral-300" id="contacts">
 
         <div class="w-4/5 ">
             <iframe

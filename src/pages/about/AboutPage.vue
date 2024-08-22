@@ -1,5 +1,5 @@
 <template>
-    <div class="main-container">
+    <div class="main-container" id="about">
 
         <h1 class="flex items-center gap-2">Главная
             <RightOutlined style="font-size: 10px;" /> О компании

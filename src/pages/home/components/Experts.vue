@@ -2,7 +2,7 @@
     <div class="bg-gray-100">
 
 
-        <div class="main-container py-10">
+        <div class="main-container py-10" id="experts">
             <div class="flex items-center justify-between mb-10">
                 <h1 class="font-semibold text-4xl ">Наши эксперты </h1>
                 <div class="flex gap-2">
