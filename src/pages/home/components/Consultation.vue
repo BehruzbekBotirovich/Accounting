@@ -1,7 +1,7 @@
 <template>
-    <div class="flex">
-        <div class="w-1/2 px-28 py-12 text-white bg-blue-800">
-            <h1 class="text-4xl font-bold  mb-4 relative z-20 uppercase" style="line-height: 60px;">
+    <div class="md:flex">
+        <div class="md:w-1/2 px-8 md:px-28 py-12 text-white bg-blue-800">
+            <h1 class=" text-xl md:text-4xl font-bold  mb-4 relative z-20 uppercase">
                 Получите бесплатную
                 экспресс-консультацию по любым вопросам
             </h1>
@@ -27,7 +27,7 @@
             </a-form>
         </div>
 
-        <div class="w-1/2">
+        <div class="hidden md:block w-1/2">
             <img class="w-full h-full object-cover" src="https://buhgalter2.sboxdemo.ru/images/site/call-to-action2.jpg"
                 alt="">
         </div>

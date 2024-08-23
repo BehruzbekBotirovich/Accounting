@@ -24,5 +24,10 @@ export default {
 <style scoped>
 svg {
     fill: #1d4ed8;
+
+    @media (max-width:610px) {
+        width: 24px;
+        height: 24px;
+    }
 }
 </style>

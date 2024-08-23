@@ -2,7 +2,7 @@
     <div class="bg-gray-100">
         <div class="main-container py-10 ">
             <div class="flex items-center justify-between mb-10">
-                <h1 class="font-semibold text-4xl ">Отзывы постоянных клиентов </h1>
+                <h1 class="font-semibold text-xl md:text-4xl ">Отзывы постоянных клиентов </h1>
                 <div class="flex gap-2">
                     <button @click="prevSlide" class="nav-button">
                         <LeftOutlined />
@@ -12,6 +12,7 @@
                     </button>
                 </div>
             </div>
+            <!-- otzivlar carouseli -->
             <a-carousel ref="carousel" :dots="false" :infinite="true" :autoplay="true" autoplaySpeed="10000">
                 <div v-for="card in cards" :key="card.id" class="carousel-card ">
                     <div class="carousel-text relative">
@@ -20,7 +21,7 @@
                         <QuoteIcon class="absolute top-14 left-0 rotate-180"></QuoteIcon>
                         <QuoteIcon class="absolute bottom-0 right-0"></QuoteIcon>
                     </div>
-                    <div class="carousel-img "> <a-image :src=card.image class="object-cover"></a-image> </div>
+                    <div class=" hidden carousel-img "> <a-image :src=card.image class="object-cover"></a-image> </div>
 
                 </div>
             </a-carousel>
@@ -81,6 +82,9 @@ const nextSlide = () => {
 
 .carousel-text {
     width: calc(100% - 290px);
+    @media (max-width:610px) {
+        width: 100%;
+    }
 }
 
 .carousel-img {

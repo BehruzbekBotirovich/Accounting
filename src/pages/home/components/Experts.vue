@@ -4,7 +4,7 @@
 
         <div class="main-container py-10" id="experts">
             <div class="flex items-center justify-between mb-10">
-                <h1 class="font-semibold text-4xl ">Наши эксперты </h1>
+                <h1 class="font-semibold text-xl md:text-4xl ">Наши эксперты </h1>
                 <div class="flex gap-2">
                     <button @click="prevSlide" class="nav-button">
                         <LeftOutlined />
@@ -14,7 +14,7 @@
                     </button>
                 </div>
             </div>
-            <a-carousel ref="carousel" :dots="false" :slidesToShow="3" :infinite="true" :autoplay="true"
+            <a-carousel ref="carousel" :dots="false" :slidesToShow="slidesToShow" :infinite="true" :autoplay="true"
                 :autoplaySpeed="4000">
                 <div v-for="card in cards" :key="card.id" class="carousel-card">
 
@@ -37,7 +37,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
 import { LeftOutlined, RightOutlined } from '@ant-design/icons-vue';
 const cards = ref([
     { id: 1, title: 'Giyasov Bobur Barotboyevich', image: 'https://buhgalter2.sboxdemo.ru/assets/cache_image/images/team/team2_394x394_641.jpg', description: " Руководитель экспертной поддержки. Специализация: налоговое, административное, трудовое право" },
@@ -55,16 +55,40 @@ const prevSlide = () => {
 const nextSlide = () => {
     carousel.value.next();
 };
+
+
+// beqkpoints slide to show
+const slidesToShow = ref(4);
+const updateSlidesToShow = () => {
+    if (window.innerWidth >= 768) {
+        slidesToShow.value = 3;
+    } else {
+        slidesToShow.value = 2;
+    }
+};
+
+onMounted(() => {
+    updateSlidesToShow();
+    window.addEventListener('resize', updateSlidesToShow);
+});
 </script>
 
 <style scoped>
 :deep(.ant-card-meta-title) {
     font-size: 20px;
+
+    @media (max-width:620px) {
+        font-size: 16px;
+    }
 }
 
 :deep(.ant-card-cover) {
     padding: 1.5rem;
     padding-bottom: 0;
+
+    @media (max-width:620px) {
+        padding: 0.5rem;
+    }
 }
 
 :deep(.ant-card-meta-description) {
@@ -85,6 +109,12 @@ const nextSlide = () => {
     border-radius: 6px;
     display: flex;
     transition: all 0.3;
+}
+
+:deep(.ant-card-body) {
+    @media (max-width:610px) {
+        padding: 0.5rem;
+    }
 }
 
 .nav-button:hover {

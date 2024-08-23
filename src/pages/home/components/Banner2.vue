@@ -1,8 +1,10 @@
 <template>
     <div class="bg-blue-600 relative">
-        <div class="main-container flex gap-10 py-16">
-            <div class="w-3/5">
-                <h1 class="text-4xl text-white mb-6 font-semibold">Передайте дела команде профессионалов с многолетним опытом</h1>
+        <div class="main-container md:flex gap-10 py-16 mobile-bg">
+            <div class="md:w-3/5 relative z-10">
+                <h1 class=" text-2xl md:text-4xl text-white mb-6 font-semibold">Передайте дела команде профессионалов с
+                    многолетним
+                    опытом</h1>
                 <h3 class="text-xl mb-4  text-white uppercase ">Как мы будем действовать: </h3>
                 <ul class="actions-list">
                     <li>
@@ -28,7 +30,7 @@
                     </li>
                 </ul>
             </div>
-            <div class="w-2/5 bg-white p-10 rounded-lg relative z-10">
+            <div class="md:w-2/5 bg-white p-10 rounded-lg relative z-10">
 
                 <h1 class="font-semibold text-2xl">Оставить заявку </h1>
                 <p class="text-gray-700 mb-4">Оставьте заявку! Наш специалист перезвонит Вам через 2 минуты и
@@ -53,7 +55,7 @@
             </div>
 
         </div>
-        <div class="absolute top-0 right-0 w-2/6 h-full ">
+        <div class="hidden md:block absolute top-0 right-0 w-2/6 h-full ">
             <img src="@/assets/images/bg3.jpg" alt="" class="h-full w-full object-cover">
         </div>
     </div>
@@ -94,6 +96,26 @@ const handleSubmit = () => {
     margin-bottom: 0;
 }
 
+.mobile-bg {
+    background-image: url('@/assets/images/bg3.jpg');
+    background-repeat: no-repeat;
+    background-color: #ffffff6d;
+
+}
+
+.mobile-bg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #3b83f670;
+    pointer-events: none;
+    /* Чтобы этот слой не блокировал взаимодействие с элементами под ним */
+    z-index: 1;
+}
+
 .actions-list li {
     display: flex;
     gap: 20px;
@@ -107,14 +129,24 @@ const handleSubmit = () => {
     font-size: 18px;
     line-height: 1.4;
     font-weight: 500;
+
+    @media (max-width:620px) {
+        font-size: 16px;
+    }
 }
 
 .actions-list>li>div {
     line-height: 0.85;
     font-weight: 900;
     font-size: 90px;
+
     opacity: 0.5;
     color: rgb(24, 66, 155);
+
+    @media (max-width:610px) {
+        font-size: 50px;
+        line-height: normal;
+    }
 
 }
 </style>

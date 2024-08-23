@@ -1,10 +1,10 @@
 <template>
-    <div ></div>
-    <div class="bg-blue-500 py-10" >
-        <div class="main-container flex gap-10" >
-            <div class="w-1/2 space-y-8 text-white" >
-                <h1 class="text-5xl font-bold">БУХГАЛТЕРСКИЙ АУТСОРСИНГ </h1>
-                <p class="font-thin text-4xl">экспертного уровня с оплатой
+    <div></div>
+    <div class="bg-blue-500 py-10">
+        <div class="main-container md:flex gap-10">
+            <div class="md:w-1/2 space-y-8 text-white">
+                <h1 class="text-xl md:text-5xl font-bold">БУХГАЛТЕРСКИЙ АУТСОРСИНГ </h1>
+                <p class="font-thin text-lg md:text-4xl">экспертного уровня с оплатой
                     только за выполненные
                     операции</p>
                 <ul class="intro space-y-4">
@@ -26,7 +26,7 @@
                 <a-button @click="showModal" class="h-14 px-8 text-white bg-blue-300 font-bold  "> Записать на
                     консултацию</a-button>
             </div>
-            <div class="w-1/2 relative my-filter">
+            <div class="md:w-1/2 relative my-filter">
                 <img class="h-full w-full object-cover rounded-xl"
                     src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                     alt="">

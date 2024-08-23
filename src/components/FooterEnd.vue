@@ -9,7 +9,7 @@
                 является публичной офертой.</p>
         </div>
 
-        <div class="social-links">
+        <div class="social-links space-y-2">
             <a :href=location_link> <img src="./icons/address-icon.svg" alt=""> {{ location }}</a>
             <a :href=email_link> <img src="./icons/mail-icon.svg" alt=""> {{ email }}</a>
             <a :href=number_link> <img src="./icons/phone-icon.svg" alt=""> {{ number }}</a>
@@ -42,6 +42,10 @@ const tg_link = "#" //link here
 .company-info>p {
     font-size: 14px;
     width: 30%;
+
+    @media (max-width:610px) {
+        width: 100%;
+    }
 }
 
 .social-links {
@@ -49,6 +53,10 @@ const tg_link = "#" //link here
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    @media (max-width:610px) {
+        display: block;
+    }
 }
 
 .social-links>a {
