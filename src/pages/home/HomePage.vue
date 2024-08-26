@@ -1,9 +1,9 @@
 <template>
     <div id="main">
         <IntroPage></IntroPage>
-        <AboutServises></AboutServises>
-        <Consultation></Consultation>
     </div>
+    <AboutServises></AboutServises>
+    <Consultation></Consultation>
     <Tarifs></Tarifs>
     <Experts />
     <Comments />

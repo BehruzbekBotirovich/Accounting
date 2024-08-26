@@ -1,9 +1,9 @@
 <template>
-    <header class="main-container flex items-center justify-between py-4">
-        <div> <img src="../assets/images/logo.png" alt=""> </div>
+    <header class="main-container sticky top-0  bg-white z-40 md:static flex items-center justify-between py-4">
+        <div> <img src="../assets/images/logo.png" alt="" class="logo-img"> </div>
         <div class="flex items-center ">
             <a-button type=""
-                class="flex gap-2 mr-4 border-blue-200 h-12 items-center px-8 font-semibold hover:bg-blue-50 hover:border-blu\">
+                class="hidden md:flex gap-2 mr-4 border-blue-200 h-12 items-center px-8 font-semibold hover:bg-blue-50 hover:border-blu\">
                 <svg width="24px" height="24px" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <circle cx="16" cy="16" r="14" fill="url(#paint0_linear_87_7225)" />
                     <path
@@ -20,7 +20,7 @@
             </a-button type="">
 
             <a-button type=""
-                class="flex gap-2 mr-10 border-blue-200 h-12 items-center px-8 font-semibold hover:bg-blue-50 hover:border-blu\">
+                class="hidden md:flex gap-2 mr-10 border-blue-200 h-12 items-center px-8 font-semibold hover:bg-blue-50 hover:border-blu\">
                 <svg width="24px" height="24px" viewBox="0 0 1024 1024" class="icon" version="1.1"
                     xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -35,9 +35,10 @@
                 </svg>Facebook
             </a-button type="">
             <div class="text-right">
-                <p class="text-gray-500 text-sm"> С 8:00 до 19:00 </p>
-                <div class="flex items-center font-bold  gap-2">
-                    <svg width="30px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <p class="text-gray-500 text-xs md:text-sm"> С 8:00 до 19:00 </p>
+                <div class="flex items-center text-sm md:text-base font-bold  gap-2">
+                    <svg class="hidden md:block" width="30px" height="30px" viewBox="0 0 24 24" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
                         <path
                             d="M13.5 2C13.5 2 15.8335 2.21213 18.8033 5.18198C21.7731 8.15183 21.9853 10.4853 21.9853 10.4853"
                             stroke="#0ea5e9" stroke-width="1.5" stroke-linecap="round" />
@@ -53,17 +54,17 @@
             </div>
 
         </div>
+        <MenuOutlined class=" md:hidden" @click="mobileMenu = true" />
     </header>
-    <div class="bg-teal-600  sticky z-30" style="top: -1px;">
+    <!-- navbar desctop -->
+    <div class="hidden md:block   bg-teal-600  sticky z-30" style="top: -1px;">
         <nav class="main-container flex justify-center">
             <ul class="navbar" style="width: 710px;">
-                <li :class="{ active: activeSection === 'main' }"  @click.prevent="navigateAndScroll('main')" >
-                    <RouterLink to="/">Главная </RouterLink>
+                <li :class="{ active: activeSection === 'main' }" @click.prevent="navigateAndScroll('main')">
+                    Главная
                 </li>
-                <router-link to="/about">
-                    <li @click="activeAbout" :class="{ active: $route.path === '/about' }">
-                        О компании </li>
-                </router-link>
+                <li @click.prevent="navigateAndScroll('about')" :class="{ active: activeSection === 'about' }">
+                    О компании </li>
 
                 <li :class="{ active: activeSection === 'tarifs' }" @click.prevent="navigateAndScroll('tarifs')">
                     Услуг и Тарыфи
@@ -81,22 +82,51 @@
 
 
 
+    <!-- navbar mobile -->
+    <transition>
+        <nav v-if="mobileMenu == true" class="mobile-nav justify-center" @click.self="hideMenu">
+            <ul class="navbar-mobile space-y-4" style="width: 80%">
+                <li :class="{ active: activeSection === 'main' }" @click.prevent="navigateAndScroll('main')">
+                    Главная
+                </li>
+                <li @click.prevent="navigateAndScroll('about')" :class="{ active: activeSection === 'about' }">
+                    О компании </li>
+                <li :class="{ active: activeSection === 'tarifs' }" @click.prevent="navigateAndScroll('tarifs')">
+                    Услуг и Тарыфи
+                </li>
+                <li :class="{ active: activeSection === 'experts' }" @click.prevent="navigateAndScroll('experts')">
+                    Специалисти
+                </li>
+                <li :class="{ active: activeSection === 'contacts' }" @click.prevent="navigateAndScroll('contacts')">
+                    Контакты
+                </li>
+            </ul>
+        </nav>
+    </transition>
+
+
 </template>
 
 <script setup>
-import { useRouter, useRoute } from 'vue-router';
-import { ref, onMounted, onUnmounted } from 'vue';
-
+import { useRouter } from 'vue-router';
 const router = useRouter();
-const route = useRoute();
+import { ref, onMounted, onUnmounted } from 'vue';
+import { MenuOutlined } from '@ant-design/icons-vue'
 const activeSection = ref('');
 
+const mobileMenu = ref(false)
+
+const hideMenu = () => {
+    console.log('ksdmfsfkdklfndslk')
+    mobileMenu.value = false
+}
 const scrollTo = (elementId) => {
     const element = document.getElementById(elementId);
     if (element) {
         element.scrollIntoView({ behavior: 'smooth' });
         activeSection.value = elementId;
     }
+    hideMenu()
 };
 
 const navigateAndScroll = (elementId) => {
@@ -105,7 +135,7 @@ const navigateAndScroll = (elementId) => {
     });
 };
 const handleScroll = () => {
-    const sections = ['main', 'tarifs', 'experts', 'contacts'];
+    const sections = ['main', 'tarifs', 'experts', 'about', 'contacts'];
     const scrollPosition = window.scrollY + window.innerHeight / 2;
 
     if (router.path === '/about') {
@@ -124,10 +154,7 @@ const handleScroll = () => {
             }
         }
     }
-    // If no section is active, set activeSection to empty (default for main page)
-    // if (route.path === '/' && activeSection.value === '') {
-    //     activeSection.value = '';
-    // }
+
 };
 
 onMounted(() => {
@@ -135,12 +162,12 @@ onMounted(() => {
     handleScroll(); // Set the active section on initial load
 });
 
+
+
 onUnmounted(() => {
     window.removeEventListener('scroll', handleScroll);
 });
-const activeAbout = () => {
-    activeSection.value = ''
-}
+
 </script>
 
 <style scoped>
@@ -148,6 +175,12 @@ const activeAbout = () => {
     gap: 2px;
     display: flex;
     align-items: center;
+}
+
+.logo-img {
+    @media (max-width:610px) {
+        width: 120px;
+    }
 }
 
 .navbar li {
@@ -164,5 +197,34 @@ const activeAbout = () => {
     background: #ffffff;
     color: #0284c7;
     font-weight: 500;
+
+}
+
+
+.navbar-mobile {
+    background: white;
+    padding: 30px;
+    height: 100%;
+}
+
+.mobile-nav {
+    width: 100%;
+    top: 0;
+    height: 100vh;
+    left: 0;
+    position: fixed;
+    z-index: 40;
+    background: #00000048;
+}
+
+/* we will explain what these classes do next! */
+.v-enter-active,
+.v-leave-active {
+    transition: opacity 0.5s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+    opacity: 0;
 }
 </style>

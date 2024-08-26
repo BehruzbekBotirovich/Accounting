@@ -1,7 +1,7 @@
 <template>
-    <div class="relative md:flex pt-20 bg-neutral-300  p-2 md:p-0" id="contacts">
+    <div class="relative md:flex md:pt-20 bg-neutral-300  p-2 md:p-0" id="contacts">
 
-        <div class="md:*:w-4/5 mb-4">
+        <div class="md:w-4/5 mb-4 md:h-20">
             <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d47927.93497069662!2d69.23923357998034!3d41.34157307506384!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38ae8b2931f41f23%3A0x81095e06b654b845!2z0KHQutCy0LXRgCDQkNC80LjRgNCwINCi0LXQvNGD0YDQsA!5e0!3m2!1sru!2s!4v1723525882119!5m2!1sru!2s"
                 width="100%" height="650" style="border:0;" allowfullscreen="" loading="lazy"
@@ -10,8 +10,9 @@
         </div>
 
 
-        <div class="bg-white py-6 px-10 md:w-1/3 space-y-6  h-fit md:-translate-x-20 md:-translate-y-10 shadow-md rounded-xl">
-            <h1 class="text-3xl font-bold ">Свяжитесь с нами удобным способом!</h1>
+        <div
+            class="bg-white py-6 px-10 md:w-1/3  space-y-3 md:space-y-6  h-fit md:-translate-x-20 md:-translate-y-10 shadow-md rounded-xl">
+            <h1 class="text-xl md:text-3xl font-bold ">Свяжитесь с нами удобным способом!</h1>
 
             <div class="flex gap-4  ">
                 <div class="p-3 border rounded h-fit">
@@ -31,7 +32,6 @@
                     <a href="#" class="font-bold text-blue-700"> +998 90 123 45 67</a>
                 </p>
             </div>
-
 
             <div class="flex gap-4 ">
                 <div class="p-3 border rounded h-fit">
@@ -67,7 +67,6 @@
                 </p>
             </div>
 
-
             <div class="flex gap-4 ">
                 <div class="p-3 border rounded h-fit">
                     <svg width="1.5rem" height="1.5rem" viewBox="0 0 24 24" fill="none"
@@ -81,10 +80,10 @@
                     <a href="#" class="font-normal text-blue-700"> beha@gmail.com</a>
                 </p>
             </div>
-            <div class="flex items-center">
+            <div class="flex flex-wrap md:flex-nowrap space-y-2 items-center">
                 <p>Свяжитесь с нами скорее</p>
                 <a-button type=""
-                    class="flex gap-2 mr-4 border-gray-200 rounded-full  h-10 items-center px-2 font-semibold hover:bg-blue-50 ">
+                    class="flex gap-2 mr-4 w-fit border-gray-200 rounded-full  h-10 items-center px-2 font-semibold hover:bg-blue-50 ">
                     <svg width="24px" height="24px" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <circle cx="16" cy="16" r="14" fill="url(#paint0_linear_87_7225)" />
                         <path
@@ -101,7 +100,7 @@
                 </a-button type="">
 
                 <a-button type=""
-                    class="flex gap-2  border-gray-200 rounded-full  h-10 items-center px-2 font-semibold hover:bg-blue-50 ">
+                    class="flex gap-2  w-fit border-gray-200 rounded-full  h-10 items-center px-2 font-semibold hover:bg-blue-50 ">
                     <svg width="22px" height="22px" viewBox="0 0 1024 1024" class="icon" version="1.1"
                         xmlns="http://www.w3.org/2000/svg">
                         <path
@@ -124,4 +123,10 @@
 
 </script>
 
-<style scoped></style>
+<style scoped>
+@media (max-width:610px) {
+    iframe {
+        height: 300px;
+    }
+}
+</style>

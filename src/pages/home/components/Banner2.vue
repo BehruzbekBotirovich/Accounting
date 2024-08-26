@@ -96,24 +96,27 @@ const handleSubmit = () => {
     margin-bottom: 0;
 }
 
-.mobile-bg {
-    background-image: url('@/assets/images/bg3.jpg');
-    background-repeat: no-repeat;
-    background-color: #ffffff6d;
+@media (max-width:610px) {
+    .mobile-bg {
+        background-image: url('@/assets/images/bg3.jpg');
+        background-repeat: no-repeat;
+        background-color: #ffffff6d;
 
-}
+    }
 
-.mobile-bg::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #3b83f670;
-    pointer-events: none;
-    /* Чтобы этот слой не блокировал взаимодействие с элементами под ним */
-    z-index: 1;
+    .mobile-bg::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #3b83f670;
+        pointer-events: none;
+        /* Чтобы этот слой не блокировал взаимодействие с элементами под ним */
+        z-index: 1;
+    }
+
 }
 
 .actions-list li {

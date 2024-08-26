@@ -32,11 +32,11 @@
                         </div>
                     </li>
                 </ul>
-                <a-row :gutter="[20,20]">
-                    <a-col :xs="24" :md="12"> <a-button type="primary"
+                <a-row :gutter="[20, 20]">
+                    <a-col :xs="24" :md="10"> <a-button type="primary"
                             class="h-12 items-center w-full  text-lg">Оформить заявку</a-button>
                     </a-col>
-                    <a-col :xs="12" :md="8">
+                    <a-col :xs="12" :md="7">
                         <a-button type=""
                             class="flex  md:gap-2 mr-4 border-blue-200 h-12 items-center w-full  font-semibold hover:bg-blue-50 hover:border-blu\">
                             <svg width="24px" height="24px" viewBox="0 0 32 32" fill="none"
@@ -55,7 +55,7 @@
                             </svg> Telegram
                         </a-button type="">
                     </a-col>
-                    <a-col :xs="12" :md="8">
+                    <a-col :xs="12" :md="7">
                         <a-button type=""
                             class="flex md:gap-2 mr-10 border-blue-200 h-12 items-center w-full font-semibold hover:bg-blue-50 hover:border-blu\">
                             <svg width="24px" height="24px" viewBox="0 0 1024 1024" class="icon" version="1.1"

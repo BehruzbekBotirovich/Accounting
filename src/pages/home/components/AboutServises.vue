@@ -1,10 +1,10 @@
 <template>
-    <div class="bg-gray-200 py-20">
+    <div class="bg-gray-200 py-20 "  id="about">
         <div class="main-container">
             <h1 class="text-3xl font-semibold mb-10">Популярные сервисы </h1>
             <a-row :gutter="[20, 20]">
-                <a-col :xs="12" :md="8">
-                    <div class="p-6 rounded-lg bg-white ">
+                <a-col :xs="24" :md="8">
+                    <div class="p-3 md:p-6 rounded-lg bg-white ">
                         <div class=" servise-wrap"> <img class="object-cover" src="@/assets/images/service1.svg" alt="">
                         </div>
                         <h1 class="md:text-lg font-semibold hover:text-blue-600 uppercase">Комплексное бухгалтерское
@@ -14,8 +14,8 @@
                     </div>
                 </a-col>
 
-                <a-col :xs="12" :md="8">
-                    <div class="p-6 rounded-lg bg-white h-full">
+                <a-col :xs="24" :md="8">
+                    <div class="p-3 md:p-6 rounded-lg bg-white h-full">
                         <div class=" servise-wrap"> <img class="object-cover" src="@/assets/images/service2.svg" alt="">
                         </div>
                         <h1 class="md:text-lg font-semibold hover:text-blue-600 uppercase"> Регистрация ООО
@@ -24,8 +24,8 @@
                     </div>
                 </a-col>
 
-                <a-col :xs="12" :md="8">
-                    <div class="p-6 rounded-lg bg-white h-full">
+                <a-col :xs="24" :md="8">
+                    <div class="p-3 md:p-6 rounded-lg bg-white h-full">
                         <div class=" servise-wrap"> <img class="object-cover" src="@/assets/images/service3.svg" alt="">
                         </div>
                         <h1 class="md:text-lg font-semibold hover:text-blue-600 uppercase">
@@ -37,8 +37,8 @@
                     </div>
                 </a-col>
 
-                <a-col :xs="12" :md="8">
-                    <div class="p-6 rounded-lg bg-white h-full">
+                <a-col :xs="24" :md="8">
+                    <div class="p-3 md:p-6 rounded-lg bg-white h-full">
                         <div class=" servise-wrap"> <img class="object-cover" src="@/assets/images/service4.svg" alt="">
                         </div>
                         <h1 class="md:text-lg font-semibold hover:text-blue-600 uppercase"> Проверка состояния учета
@@ -48,8 +48,8 @@
                     </div>
                 </a-col>
 
-                <a-col :xs="12" :md="8">
-                    <div class="p-6 rounded-lg bg-white h-full">
+                <a-col :xs="24" :md="8">
+                    <div class="p-3 md:p-6 rounded-lg bg-white h-full">
                         <div class=" servise-wrap"> <img class="object-cover" src="@/assets/images/service5.svg" alt="">
                         </div>
                         <h1 class="md:text-lg font-semibold hover:text-blue-600 uppercase">
@@ -60,8 +60,8 @@
                     </div>
                 </a-col>
 
-                <a-col :xs="12" :md="8">
-                    <div class="p-6 rounded-lg bg-white h-full ">
+                <a-col :xs="24" :md="8">
+                    <div class="p-3 md:p-6 rounded-lg bg-white h-full ">
                         <div class=" servise-wrap"> <img class="object-cover" src="@/assets/images/service6.svg" alt="">
                         </div>
                         <h1 class="md:text-lg font-semibold hover:text-blue-600 uppercase"> Декларация 3-НДФЛ </h1>

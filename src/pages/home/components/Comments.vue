@@ -17,9 +17,9 @@
                 <div v-for="card in cards" :key="card.id" class="carousel-card ">
                     <div class="carousel-text relative">
                         <h1 class="text-3xl pb-4 mb-4 border-b font-semibold "> {{ card.title }}</h1>
-                        <div class="text-base px-14"> {{ card.description }}</div>
-                        <QuoteIcon class="absolute top-14 left-0 rotate-180"></QuoteIcon>
-                        <QuoteIcon class="absolute bottom-0 right-0"></QuoteIcon>
+                        <div class="text-base  md:px-14"> {{ card.description }}</div>
+                        <QuoteIcon class="hidden md:block absolute top-14 left-0 rotate-180"></QuoteIcon>
+                        <QuoteIcon class="hidden md:block absolute bottom-0 right-0"></QuoteIcon>
                     </div>
                     <div class=" hidden carousel-img "> <a-image :src=card.image class="object-cover"></a-image> </div>
 
