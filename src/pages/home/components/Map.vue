@@ -1,7 +1,7 @@
 <template>
     <div class="relative md:flex md:pt-20 bg-neutral-300  p-2 md:p-0" id="contacts">
 
-        <div class="md:w-4/5 mb-4 md:h-20">
+        <div class="md:w-4/5 mb-4">
             <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d47927.93497069662!2d69.23923357998034!3d41.34157307506384!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38ae8b2931f41f23%3A0x81095e06b654b845!2z0KHQutCy0LXRgCDQkNC80LjRgNCwINCi0LXQvNGD0YDQsA!5e0!3m2!1sru!2s!4v1723525882119!5m2!1sru!2s"
                 width="100%" height="650" style="border:0;" allowfullscreen="" loading="lazy"
